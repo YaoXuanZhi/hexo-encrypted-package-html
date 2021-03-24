@@ -1,4 +1,4 @@
-<div id="spec_replace_id">
+<div id="inner-encryted-page">
     <head>
         <link rel="stylesheet" href="http://cdn.bootstrapmb.com/bootstrap/4.4.0/css/bootstrap.min.css">
         <script src="https://cdn.jsdelivr.net/npm/js-base64@3.6.0/base64.min.js"></script>
@@ -23,7 +23,6 @@
     </div>
 
     <script type="text/javascript">
-
         var Base64WithXOR = {
             encode: function (input) {
                 return Base64.encode(input);
@@ -57,12 +56,13 @@
             },
         }
 
+        // 密码验证
         function checkPassword() {
             var pwd = document.getElementById("password").value;
             var encoded_content = document.getElementById("encoded_text").innerHTML;
             var decoded_ele = Base64WithXOR.decode_with_xor(encoded_content, pwd);
             if (decoded_ele.trim().startsWith('<') && decoded_ele.trim().endsWith('>')) {
-                document.getElementById("spec_replace_id").outerHTML = decoded_ele;
+                document.getElementById("inner-encryted-page").outerHTML = decoded_ele;
             } else {
                 alert("密码错误，请重新输入");
             }
