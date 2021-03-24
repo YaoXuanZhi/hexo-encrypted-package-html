@@ -1,0 +1,17 @@
+{
+  "name": "hexo-encrypted-package-html",
+  "version": "0.0.1",
+  "description": "将特定页面进行加密打包",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hexo",
+    "plugin",
+    "encrypted",
+    "package"
+  ],
+  "author": "yaoxuanzhi",
+  "license": "MIT"
+}
