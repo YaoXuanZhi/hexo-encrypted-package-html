@@ -12,18 +12,15 @@ const defaultConfig = {
 };
 
 hexo.extend.filter.register('after_post_render', (data) => {
-    const config = Object.assign(defaultConfig, hexo.config.encrypt, data);
     if(data.password2 == "" || data.password2 == undefined) {
         return data;
     }
 
     for (var item in data){
-        // log.warn(`${item} = ${data[item]}`);
-        // log.warn(`${item} = ${data[item]}`);
         log.warn(` ${data.title.trim()} ====> ${item} ${data.full_source}`);
     }
 
-    // 注意，data.content就是文章正文的标签
+    // data.content就是文章正文的Html
     data.origin = data.content;
     data.content = package_encrypted_html.encrypt_html(__dirname, data.content, data.password2);
     log.warn(`hexo-encrypt-test: encrypting "${data.password2}" "${data.title.trim()}" "${__dirname}"`);
