@@ -1,6 +1,6 @@
 # hexo-encrypted-package-html
 
-这是一款用于文章正文内容加密的hexo插件，而在hexo插件市场里，已经有[hexo-blog-encrypt](https://github.com/D0n9X1n/hexo-blog-encrypt)珠玉在前了，这个插件是本人在学习hexo插件的练手之作，对其中缘由感兴趣的可访问[开发一款用于正文加密的Hexo插件](https://yaoxuanzhi.github.io/news/)
+这是一款用于文章正文内容加密的hexo插件，而在hexo插件市场里，已经有[hexo-blog-encrypt hexo插件](https://github.com/D0n9X1n/hexo-blog-encrypt)珠玉在前了，这个插件是本人在学习hexo插件的练手之作，对其中缘由感兴趣的可访问[开发一款用于正文加密的Hexo插件](https://yaoxuanzhi.github.io/news/)
 
 ## 在线演示
 
