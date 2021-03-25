@@ -1,8 +1,8 @@
 'use strict';
 const fs = require('fs');
 var assert = require('assert');
-var base64_with_xor = require("../base64_with_xor");
-const package_encrypted_html = require('../package_encrypted_html');
+var base64_with_xor = require("../lib/base64_with_xor");
+const package_encrypted_html = require('../lib/package_encrypted_html');
 
 describe('Base', function() {
   const source_text = "aaaaa";
@@ -27,7 +27,7 @@ describe('Base', function() {
 
 describe('hexo-package-encrypted-html', () => {
     const output_path = "./test/out.html";
-    const template_path = `${__dirname}/../`;
+    const template_path = `${__dirname}/../lib/`;
     const data = {
         password: "test",
         content: `<div> Hello Word! </div>`
