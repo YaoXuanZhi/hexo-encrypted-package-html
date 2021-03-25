@@ -3,18 +3,14 @@
 const package_encrypted_html = require('./package_encrypted_html');
 const log = hexo.log;
 
-hexo.extend.filter.register('before_generate', function(){
-    console.log("增加自定义的加密");
-});
-
 hexo.extend.filter.register('after_post_render', (data) => {
     if(data.password == "" || data.password == undefined) {
         return data;
     }
 
-    for (var item in data){
-        log.warn(` ${data.title.trim()} ====> ${item} ${data.full_source}`);
-    }
+    // for (var item in data){
+    //     log.warn(` ${data.title.trim()} ====> ${item} ${data.content}`);
+    // }
 
     // data.content就是文章正文的Html
     data.origin = data.content;

@@ -1,66 +1,41 @@
 'use strict';
+const fs = require('fs');
+var assert = require('assert');
+var base64_with_xor = require("../base64_with_xor");
+const package_encrypted_html = require('../package_encrypted_html');
 
-// const should = require('chai').should(); // eslint-disable-line
+describe('Base', function() {
+  const source_text = "aaaaa";
+  const password = "admin";
+  describe('normal encode/decode', function() {
+    it('should return true', function() {
+        const encoded_text = base64_with_xor.encode(source_text);
+        const decoded_text = base64_with_xor.decode(encoded_text);
+        console.log(encoded_text);
+        console.log(decoded_text);
+        assert.equal(source_text, decoded_text);
+    });
+  });
+  describe('encode/decode with xor', function() {
+    it('should return true', function() {
+        const encoded_text_with_xor = base64_with_xor.encode_with_xor(source_text, password);
+        const decoded_text_with_xor = base64_with_xor.decode_with_xor(encoded_text_with_xor, password);
+        assert.equal(source_text, decoded_text_with_xor);
+    });
+  });
+});
 
-// describe('hexo-html-minifier', () => {
-//   const ctx = {
-//     config: {
-//       html_minifier: {
-//         collapseBooleanAttributes: true,
-//         collapseWhitespace: true,
-//         ignoreCustomComments: [/^\s*more/],
-//         removeComments: true,
-//         removeEmptyAttributes: true,
-//         removeScriptTypeAttributes: true,
-//         removeStyleLinkTypeAttributes: true,
-//         minifyJS: true,
-//         minifyCSS: true
-//       }
-//     }
-//   };
-//   const h = require('../lib/filter').bind(ctx);
-//   const defaultCfg = JSON.parse(JSON.stringify(ctx.config));
-//   const input = '<p id="">foo</p>';
-//   const path = 'index.html';
+describe('hexo-package-encrypted-html', () => {
+    const output_path = "./test/out.html";
+    const template_path = `${__dirname}/../`;
+    const data = {
+        password: "test",
+        content: `<div> Hello Word! </div>`
+    };
 
-//   beforeEach(() => {
-//     ctx.config = JSON.parse(JSON.stringify(defaultCfg));
-//   });
-
-//   it('default', () => {
-//     const result = h(input, { path });
-//     result.should.eql('<p>foo</p>');
-//   });
-
-//   it('option', () => {
-//     ctx.config.html_minifier.removeEmptyAttributes = false;
-//     const result = h(input, { path });
-//     result.should.eql(input);
-//   });
-
-//   it('exclude', () => {
-//     ctx.config.html_minifier.exclude = '**/*.min.html';
-//     const result = h(input, { path: 'foo/bar.min.html' });
-//     result.should.eql(input);
-//   });
-
-//   it('invalid input', () => {
-//     const invalid = '<html><>?:"{}|_+</html>';
-//     let expected;
-
-//     try {
-//       minify(invalid);
-//     } catch (err) {
-//       expected = err;
-//     }
-
-//     try {
-//       h(invalid, { path });
-//       should.fail();
-//     } catch (err) {
-//       err.message.should.eql(`Path: ${path}\n${expected}`);
-//     }
-//   });
-// });
-
-console.log("run test finished");
+    data.content = package_encrypted_html.encrypt_html(template_path, data.content, data.password);
+    var full_html = `<html> ${data.content} </html>`;
+    fs.writeFile(output_path, full_html, function(err, result) {
+        if (err) throw err;
+    });
+});
