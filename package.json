@@ -5,7 +5,7 @@
     "url": "git+ssh://git@github.com/yaoxuanzhi/hexo-encrypted-package-html.git"
   },
   "version": "0.0.1",
-  "description": "将特定页面进行加密打包",
+  "description": "encrypt the article body plugin",
   "main": "index.js",
   "maintainers": [
     {
