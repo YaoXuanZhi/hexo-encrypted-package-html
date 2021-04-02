@@ -133,7 +133,7 @@
     </style>
 
     <div class="text-center h-100">
-        <form class="text-left mx-auto card p-4 w-100 p-2" autocomplete="off">
+        <form class="text-left mx-auto card p-4 w-100 p-2" autocomplete="off" target="hide_iframe">
             <h1 class="h3 mb-3 text-center">请输入访问密码</h1>  <input type="password"
                 id="password" name="current-password" autocomplete="current-password"
                 class="form-control rounded-right input-password" spellcheck="false" autocorrect="off"
@@ -142,6 +142,7 @@
             <div id="encoded_text" style="display:none;">
                 base64_text
             </div>
+            <iframe id="id_iframe" name="hide_iframe" style="display:none;"></iframe>
     </div>
 
     <script type="text/javascript">
