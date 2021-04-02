@@ -221,9 +221,12 @@
         function checkPasswordWrapper(pwd, handle_fun, error_fun) {
             var encoded_content = document.getElementById("encoded_text").innerHTML;
             var decoded_ele = Base64WithXOR.decode_with_xor(encoded_content, pwd);
-            if (decoded_ele.trim().startsWith('<') && decoded_ele.trim().endsWith('>')) {
+            var decoded_text = decoded_ele.trim();
+            var prefix = "hexo-encrypted-package-html";
+            decoded_text = decoded_text.substr(prefix.length);
+            if (decoded_text.length == 0 || (decoded_text.startsWith('<') && decoded_text.endsWith('>'))) {
                 if (typeof handle_fun === "function") {
-                    handle_fun(document.getElementById("inner-encryted-page"), decoded_ele);
+                    handle_fun(document.getElementById("inner-encryted-page"), decoded_text);
                 }
                 return true;
             } else {

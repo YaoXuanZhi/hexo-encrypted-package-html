@@ -14,8 +14,9 @@ hexo.extend.filter.register('after_post_render', (data) => {
     // }
 
     // data.content就是文章正文的Html
+    var prefix = "hexo-encrypted-package-html";
     data.origin = data.content;
-    data.content = package_encrypted_html.encrypt_html(template_path, data.content, data.password);
+    data.content = package_encrypted_html.encrypt_html(template_path, prefix+data.content, data.password);
     log.info(`hexo-encrypted-package-html: encrypting "password:${data.password}" "path:${data.full_source.trim()}"`);
     return data;
 }, 1000);
