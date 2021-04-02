@@ -4,7 +4,7 @@
     "type": "git",
     "url": "git+ssh://git@github.com/yaoxuanzhi/hexo-encrypted-package-html.git"
   },
-  "version": "0.7.0",
+  "version": "0.7.5",
   "description": "encrypt the article body plugin",
   "main": "index.js",
   "maintainers": [
